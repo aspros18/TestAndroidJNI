@@ -38,8 +38,14 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
     vector.push_back("test3");
     vector.push_back("test4 i am here end");
     vector.push_back("last world");
-    vector.pop_back();
 
+    // vector 遍历
+    std::vector<std::string>::iterator it;
+    for (it = vector.begin(); it < vector.end(); it++) {
+        LOGD("vector[%s]", it->c_str());
+    }
+
+    vector.pop_back();
     number = vector.size();
     LOGE("number = %d", number);
     strTest = vector[number-1];
