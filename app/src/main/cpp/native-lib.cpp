@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <queue>
+#include <deque>
 #include <map>
 #include <set>
 #include <hash_map>
@@ -83,6 +85,36 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
 
     LOGI(">>>>>>>>>nativeTestList end>>>>>>>>>>>>");
     return env->NewStringUTF(strTest.c_str());
+}
+
+JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestQueue(JNIEnv *env, jobject /* this */){
+    LOGI(">>>>>>>>>nativeTestQueue start>>>>>>>>>>>>");
+
+    string str = "hello";
+    queue<char> q;
+    // 添加元素
+    q.push('A');
+    q.push('B');
+    q.push('C');
+
+    // 添加头部,原来有就覆盖
+    q.front() = 'O';
+
+    // 添加尾部,原来有就覆盖
+    q.back() = 'D';
+
+    // 遍历并出队删除元素
+    int size = q.size();
+    for (int i = 0; i < size && !q.empty(); i++) {
+        LOGD("queue[%d]=[%c]", i, q.front());
+        q.pop();
+    }
+
+    LOGD("after pop queue.size()=%d", q.size());
+
+
+    LOGI(">>>>>>>>>nativeTestQueue end>>>>>>>>>>>>");
+    return env->NewStringUTF(str.c_str());
 }
 
 

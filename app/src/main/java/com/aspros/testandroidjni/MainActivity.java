@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public native String nativeTestVector();
     public native String nativeTestList();
+    public native String nativeTestQueue();
 
     @Override
     public void onClick(View v) {
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv.setText(nativeTestVector());
 
                 nativeTestList();
+                nativeTestQueue();
                 break;
         }
     }
