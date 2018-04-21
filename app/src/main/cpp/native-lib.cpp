@@ -10,6 +10,8 @@
 #include <android/log.h>
 #define LOG_TAG    "TestAndroidJNI"
 
+using namespace std;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,17 +24,17 @@ extern "C" {
 
 
 JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_stringFromJNI(JNIEnv *env, jobject /* this */) {
-    std::string hello = "Hello from C++";
+    string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }
 
 JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestVector(JNIEnv *env, jobject /* this */){
-    std::string strTest;
+    string strTest;
     int number;
 
     LOGI(">>>>>>>>>nativeTestVector start>>>>>>>>>>>>");
 
-    std::vector<std::string> vector;
+    vector<string> vector;
     vector.push_back("test1");
     vector.push_back("test2");
     vector.push_back("test3");
@@ -63,8 +65,8 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
 JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestList(JNIEnv *env, jobject /* this */){
     LOGI(">>>>>>>>>nativeTestList start>>>>>>>>>>>>");
 
-    std::string strTest;
-    std::list<std::string> list1;
+    string strTest;
+    list<string> list1;
     list1.push_back("hello");
     list1.push_front("world");
 
