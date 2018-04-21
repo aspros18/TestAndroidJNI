@@ -136,6 +136,30 @@ void merge_sort(int a[], int start, int end) {
     }
 }
 
+// 二分法查找, 使用前需先对数组进行排序
+int binary_search(int arr[], int len, int key)
+{
+
+    int high, low;
+    high = len - 1;//假设数组是从小到大排列的
+    low = 0;
+    int midle = len / 2;
+
+    while (high >= low) {
+        midle = (high + low) / 2;
+
+        if (arr[midle] == key)
+            return midle;
+        if (arr[midle] > key)
+            high = midle - 1;  // 前提是假设数组是从小到大排序，否则不确定是该加1还是减1
+        else if (arr[midle] < key)
+            low = midle + 1;
+    }
+
+    return (-1);
+
+}
+
 #ifdef __cplusplus
 }
 #endif

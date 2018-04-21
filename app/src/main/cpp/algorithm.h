@@ -23,6 +23,9 @@ extern void quick_sort(int *arr, int offset, int len);
 // 归并排序 平均时间O(nlog2n)
 extern void merge_sort(int arr[], int start, int end);
 
+// 二分法查找
+extern int binary_search(int arr[], int len, int key);
+
 #ifdef __cplusplus
 }
 #endif
