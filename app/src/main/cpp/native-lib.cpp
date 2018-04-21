@@ -80,8 +80,9 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
 
 
     // buble sort test
+    int len = sizeof(arr)/sizeof(int);
     LOGE("before buble sort arr is: %s", dump(arr, 10).c_str());
-    bulle_sort(arr, 10);
+    merge_sort(arr, 0, len - 1);
     LOGE("after  buble sort arr is: %s", dump(arr, 10).c_str());
 
     LOGI(">>>>>>>>>nativeTestVector end>>>>>>>>>>>>");
