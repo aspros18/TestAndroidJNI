@@ -11,6 +11,9 @@
 #include <hash_set>
 
 #include <android/log.h>
+#include <string.h>
+#include "algorithm.h"
+
 #define LOG_TAG    "TestAndroidJNI"
 
 using namespace std;
@@ -31,10 +34,26 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_stringFrom
     return env->NewStringUTF(hello.c_str());
 }
 
+char buffer[100] = {0};
+string dump(int* arr, int size)
+{
+    string str;
+    char temp[5] = {0};
+    memset(buffer, 0, sizeof(buffer));
+
+    for (int i = 0; i < size; i ++) {
+        sprintf(temp, "%d ", arr[i]);
+        strcat(buffer, temp);
+    }
+
+    str = buffer;
+    return str;
+}
+
 JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestVector(JNIEnv *env, jobject /* this */){
     string strTest;
     int number;
-
+    int arr[10] = {5, 2, -4, 3, 6, 7, 8, 10, 4, 11};
     LOGI(">>>>>>>>>nativeTestVector start>>>>>>>>>>>>");
 
     vector<string> vector;
@@ -59,6 +78,11 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
     LOGE("string find index = %d", index);
     strTest.replace(index, strTest.size(), "nowhehe");
 
+
+    // buble sort test
+    LOGE("before buble sort arr is: %s", dump(arr, 10).c_str());
+    bulle_sort(arr, 10);
+    LOGE("after  buble sort arr is: %s", dump(arr, 10).c_str());
 
     LOGI(">>>>>>>>>nativeTestVector end>>>>>>>>>>>>");
     return env->NewStringUTF(strTest.c_str());
