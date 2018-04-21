@@ -36,6 +36,7 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_testVector
     vector.push_back("test3");
     vector.push_back("test4");
     vector.push_back("last world");
+    vector.pop_back();
 
     number = vector.size();
     LOGE("number = %d", number);
