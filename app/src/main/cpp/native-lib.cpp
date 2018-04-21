@@ -173,7 +173,7 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
 
     // deque 遍历, 队后出
     string str2;
-   while (!deque2.empty()) {
+    while (!deque2.empty()) {
         str2.push_back(deque2.back());
         str2.push_back(' ');
         deque2.pop_back(); // 队后出
@@ -188,6 +188,39 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
 
     LOGI(">>>>>>>>>nativeTestDeque end>>>>>>>>>>>>");
     return env->NewStringUTF(str.c_str());
+}
+
+
+JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestMap(JNIEnv *env, jobject /* this */){
+    LOGI(">>>>>>>>>nativeTestMap start>>>>>>>>>>>>");
+    string ret = "hello";
+
+    map<int, string> map1;
+    map1.insert(pair<int, string>(1, "LiMei"));
+    map1.insert(map<int, string>::value_type(2, "luxi"));
+    map1[3] = "jack ma";
+
+    map<int, string>::iterator it;
+
+    string str;
+    for(it = map1.begin(); it != map1.end(); it++){
+        str += "[";
+        str += it->second;
+        str += "] ";
+    }
+
+    LOGD("map1:%s", str.c_str());
+
+    // 查找
+    int key = 2;
+    it = map1.find(key);
+    if (it == map1.end())
+        LOGD("key is %d, not found value", key);
+    else
+        LOGD("key is %d, found value=%s", key, it->second.c_str());
+
+    LOGI(">>>>>>>>>nativeTestMap end>>>>>>>>>>>>");
+    return env->NewStringUTF(ret.c_str());
 }
 
 
