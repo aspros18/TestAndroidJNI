@@ -34,13 +34,17 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_testVector
     vector.push_back("test1");
     vector.push_back("test2");
     vector.push_back("test3");
-    vector.push_back("test4");
+    vector.push_back("test4 i am here end");
     vector.push_back("last world");
     vector.pop_back();
 
     number = vector.size();
     LOGE("number = %d", number);
     strTest = vector[number-1];
+
+    int index = strTest.find("end", 0);
+    LOGE("string find index = %d", index);
+    strTest.replace(index, strTest.size(), "nowhehe");
 
     return env->NewStringUTF(strTest.c_str());
 }
