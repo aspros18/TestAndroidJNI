@@ -26,9 +26,11 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_stringFrom
     return env->NewStringUTF(hello.c_str());
 }
 
-JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_testVector(JNIEnv *env, jobject /* this */){
+JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestVector(JNIEnv *env, jobject /* this */){
     std::string strTest;
     int number;
+
+    LOGI(">>>>>>>>>nativeTestVector start>>>>>>>>>>>>");
 
     std::vector<std::string> vector;
     vector.push_back("test1");
@@ -46,6 +48,32 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_testVector
     LOGE("string find index = %d", index);
     strTest.replace(index, strTest.size(), "nowhehe");
 
+
+    LOGI(">>>>>>>>>nativeTestVector end>>>>>>>>>>>>");
+    return env->NewStringUTF(strTest.c_str());
+}
+
+
+JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestList(JNIEnv *env, jobject /* this */){
+    LOGI(">>>>>>>>>nativeTestList start>>>>>>>>>>>>");
+
+    std::string strTest;
+    std::list<std::string> list1;
+    list1.push_back("hello");
+    list1.push_front("world");
+
+    strTest = list1.front();
+    LOGE("str: %s", strTest.c_str());
+
+    strTest = list1.back();
+    LOGE("str: %s", strTest.c_str());
+
+    list1.pop_back();
+    LOGE("str: %s", strTest.c_str());
+    strTest = list1.front();
+    LOGE("str: %s", strTest.c_str());
+
+    LOGI(">>>>>>>>>nativeTestList end>>>>>>>>>>>>");
     return env->NewStringUTF(strTest.c_str());
 }
 

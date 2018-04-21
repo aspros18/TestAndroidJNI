@@ -31,14 +31,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public native String stringFromJNI();
 
 
-    public native String testVector();
+    public native String nativeTestVector();
+    public native String nativeTestList();
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button:
                 TextView tv = (TextView) findViewById(R.id.sample_text);
-                tv.setText(testVector());
+                tv.setText(nativeTestVector());
+
+                nativeTestList();
                 break;
         }
     }
