@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public native String nativeTestVector();
     public native String nativeTestList();
     public native String nativeTestQueue();
+    public native String nativeTestDeque();
 
     @Override
     public void onClick(View v) {
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 nativeTestList();
                 nativeTestQueue();
+                nativeTestDeque();
                 break;
         }
     }

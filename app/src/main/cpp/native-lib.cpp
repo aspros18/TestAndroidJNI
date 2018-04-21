@@ -117,6 +117,54 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
     return env->NewStringUTF(str.c_str());
 }
 
+JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestDeque(JNIEnv *env, jobject /* this */){
+    LOGI(">>>>>>>>>nativeTestDeque start>>>>>>>>>>>>");
+
+    string str = "hello";
+    deque<char> deque1;
+    // 添加元素
+    deque1.push_back('A');
+    deque1.push_back('B');
+    deque1.push_back('C');
+    deque1.push_front('O');
+    deque1.push_back('D');
+
+    deque<char> deque2(deque1);
+
+    // deque 遍历,队前出
+    std::deque<char>::iterator it;
+    string str1;
+    for (it = deque1.begin(); it < deque1.end(); it++) {
+        str1.push_back(deque1.front());
+        str1.push_back(' ');
+        deque1.pop_front(); // 队前出
+
+        if (deque1.empty())
+            LOGD("deque1[%s]", str1.c_str());
+    }
+
+    LOGD("after pop deque1.size()=%d", deque1.size());
+
+    // deque 遍历, 队后出
+    string str2;
+   while (!deque2.empty()) {
+        str2.push_back(deque2.back());
+        str2.push_back(' ');
+        deque2.pop_back(); // 队后出
+
+        if (deque2.empty())
+            LOGD("deque2[%s]", str2.c_str());
+    }
+
+    LOGD("after pop deque2.size()=%d", deque2.size());
+
+
+
+    LOGI(">>>>>>>>>nativeTestDeque end>>>>>>>>>>>>");
+    return env->NewStringUTF(str.c_str());
+}
+
+
 
 #ifdef __cplusplus
 }
