@@ -30,12 +30,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     public native String stringFromJNI();
 
+
+    public native String testVector();
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button:
                 TextView tv = (TextView) findViewById(R.id.sample_text);
-                tv.setText(stringFromJNI());
+                tv.setText(testVector());
                 break;
         }
     }
