@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public native String nativeTestVector();
     public native String nativeTestList();
+    public native String nativeTestStack();
     public native String nativeTestQueue();
     public native String nativeTestDeque();
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv.setText(nativeTestVector());
 
                 nativeTestList();
+                nativeTestStack();
                 nativeTestQueue();
                 nativeTestDeque();
                 break;

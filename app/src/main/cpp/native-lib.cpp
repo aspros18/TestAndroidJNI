@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <stack>
 #include <queue>
 #include <deque>
 #include <map>
@@ -85,6 +86,31 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
 
     LOGI(">>>>>>>>>nativeTestList end>>>>>>>>>>>>");
     return env->NewStringUTF(strTest.c_str());
+}
+
+JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestStack(JNIEnv *env, jobject /* this */){
+    LOGI(">>>>>>>>>nativeTestStack start>>>>>>>>>>>>");
+
+    string ret = "hello";
+    stack<char> st;
+    st.push('A');
+    st.push('B');
+    st.push('C');
+
+    string str;
+    while (!st.empty()) {
+        str.push_back(st.top());
+        str.push_back(' ');
+        st.pop(); // 从栈顶出
+
+        if (st.empty())
+            LOGD("stack[%s]", str.c_str());
+    }
+
+    LOGD("after pop stack.size()=%d", st.size());
+
+    LOGI(">>>>>>>>>nativeTestStack end>>>>>>>>>>>>");
+    return env->NewStringUTF(ret.c_str());
 }
 
 JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestQueue(JNIEnv *env, jobject /* this */){
