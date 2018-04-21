@@ -31,9 +31,13 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_testVector
     int number;
 
     std::vector<std::string> vector;
+    vector.push_back("test1");
+    vector.push_back("test2");
+    vector.push_back("test3");
+    vector.push_back("test4");
     vector.push_back("last world");
 
-    number = vector.capacity();
+    number = vector.size();
     LOGE("number = %d", number);
     strTest = vector[number-1];
 
