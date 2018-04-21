@@ -195,6 +195,7 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
     LOGI(">>>>>>>>>nativeTestMap start>>>>>>>>>>>>");
     string ret = "hello";
 
+    // map 内部用红黑二叉树实现
     map<int, string> map1;
     map1.insert(pair<int, string>(1, "LiMei"));
     map1.insert(map<int, string>::value_type(2, "luxi"));
@@ -220,6 +221,39 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
         LOGD("key is %d, found value=%s", key, it->second.c_str());
 
     LOGI(">>>>>>>>>nativeTestMap end>>>>>>>>>>>>");
+    return env->NewStringUTF(ret.c_str());
+}
+
+JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestSet(JNIEnv *env, jobject /* this */){
+    LOGI(">>>>>>>>>nativeTestSet start>>>>>>>>>>>>");
+    string ret = "hello";
+
+    // set 内部平衡二叉树实现
+    string strArr[5] = {"LiMei", "luxi", "jack ma", "robin", "pony ma"};
+    set<string> set1(strArr, strArr+5);
+    set1.insert("somebody");
+    set1.insert("pony ma"); // 用重复值插入, 不会对大小产生影响
+    set1.insert("luxi");    // 用重复值插入
+
+    // 遍历set
+    set<string>::iterator it;
+    string str;
+    for(it = set1.begin(); it != set1.end(); it++){
+        str += "[";
+        str += *it;
+        str += "] ";
+    }
+
+    LOGD("set1:%s", str.c_str());
+
+    // 查找
+    it = set1.find("pony ma");
+    if (it != set1.end())
+        LOGD("found %s in set", it->c_str());
+    else
+        LOGD("not found in set");
+
+    LOGI(">>>>>>>>>nativeTestSet end>>>>>>>>>>>>");
     return env->NewStringUTF(ret.c_str());
 }
 
