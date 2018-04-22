@@ -17,7 +17,8 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/native-lib.cpp src/main/cpp/algorithm.cpp src/main/cpp/algorithm.h)
+             src/main/cpp/native-lib.cpp src/main/cpp/algorithm.cpp src/main/cpp/algorithm.h
+             src/main/cpp/concurrent.cpp src/main/cpp/concurrent.h src/main/cpp/structures.cpp src/main/cpp/structures.h)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

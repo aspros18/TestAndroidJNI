@@ -13,6 +13,9 @@
 #include <android/log.h>
 #include <string.h>
 #include "algorithm.h"
+#include "structures.h"
+#include <iostream>
+
 
 #define LOG_TAG    "TestAndroidJNI"
 
@@ -282,6 +285,24 @@ JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTest
     return env->NewStringUTF(ret.c_str());
 }
 
+
+JNIEXPORT jstring JNICALL Java_com_aspros_testandroidjni_MainActivity_nativeTestStructures(JNIEnv *env, jobject /* this */)
+{
+    LOGI(">>>>>>>>>nativeTestStructures start>>>>>>>>>>>>");
+    string ret = "hello";
+
+    Complex tatol(0,0), tatol2(0,0);
+    Complex complex1(3.0, 5.1);
+    Complex complex2(6.1, 8.2);
+
+    tatol = complex1 + complex2;
+    tatol2 = operator+(complex1, complex2);
+
+    LOGD("tatol dReal=%.02f dImag=%.02f", tatol.dReal, tatol.dImag);
+    LOGD("tatol2 dReal=%.02f dImag=%.02f", tatol2.dReal, tatol2.dImag);
+    LOGI(">>>>>>>>>nativeTestStructures end>>>>>>>>>>>>");
+    return env->NewStringUTF(ret.c_str());
+}
 
 
 #ifdef __cplusplus
